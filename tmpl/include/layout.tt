@@ -30,11 +30,16 @@
                 <div class="nav-collapse">
                     <ul class="nav">
                         <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
                     </ul>
                 </div>
+                <ul class="nav pull-right">
+                  [% IF c().session.get('name') %]
+                  <li><a>Hello, [% c().session.get('name') %]</a></li>
+                  <li><a href="/account/logout">logout</a></li>
+                  [% ELSE %]
+                  <li><a href="/account/login">login</a></li>
+                  [% END %]
+                </ul>
             </div>
         </div><!-- /.navbar-inner -->
     </div><!-- /.navbar -->

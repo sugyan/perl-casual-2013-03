@@ -17,6 +17,16 @@ __PACKAGE__->load_plugins(
     'Web::CSRFDefender' => {
         post_only => 1,
     },
+    'Web::Auth', {
+        module => 'Github',
+        on_finished => sub {
+            my ($c, $token, $user) = @_;
+            my $name = $user->{login} || die;
+            $c->session->set('name' => $name);
+            return $c->redirect('/');
+        },
+        authenticate_path => '/account/login',
+    },
 );
 
 # setup view
