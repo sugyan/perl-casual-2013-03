@@ -4,5 +4,18 @@
 
 <hr />
 
+<dl>
+[% FOREACH entry IN entries %]
+<dt>[% entry.user_name %]</dt>
+<dd>[% entry.body %]</dd>
+[% END %]
+</dl>
+
+[% IF c().session.get('name') %]
+<form class="form-inline well" method="POST" action="/post">
+  <input type="text" name="body">
+  <input type="submit" value="送信" class="btn" >
+</form>
+[% END %]
 
 [% END %]
