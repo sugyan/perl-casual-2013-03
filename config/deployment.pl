@@ -9,4 +9,10 @@ my $dbpath = File::Spec->catfile($basedir, 'db', 'deployment.db');
             sqlite_unicode => 1,
         }
     ],
+    Auth => {
+        Github => {
+            client_id => $ENV{GITHUB_CLIENT_ID},
+            client_secret => $ENV{GITHUB_CLIENT_SECRET},
+        }
+    }
 };
